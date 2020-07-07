@@ -33,9 +33,9 @@ function toColorObject(color) {
   const { r, g, b } = color;
   return {
     hexes: [
-      `#${toHex(r, -32)}${toHex(g, -32)}${toHex(b, -32)}`,
       `#${toHex(r)}${toHex(g)}${toHex(b)}`,
-      `#${toHex(r, 32)}${toHex(g, 32)}${toHex(b, 32)}`
+      `#${toHex(r, 32)}${toHex(g, 32)}${toHex(b, 32)}`,
+      `#${toHex(r, 64)}${toHex(g, 64)}${toHex(b, 64)}`
     ],
     rgb: `(${r},${g},${b})`
   }
