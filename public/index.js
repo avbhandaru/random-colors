@@ -25,8 +25,28 @@ $(document).ready(() => {
   };
   console.log('req body', reqBody);
 
-  $.getJSON(CORS + API, reqBody, (resBody, textStatus) => {
-    console.log(textStatus, resBody);
-  });
+  fetch(CORS + API, {
+    method: 'POST',
+    body: JSON.stringify(reqBody)
+  })
+  .then(respose => response.json())
+  .then(resBody => {
+    console.log('SUCCESS', resBody)
+  })
+  .catch(err => {
+    console.log('ERROR', err)
+  })
+
+  // $.ajax({
+  //   type: 'GET',
+  //   url: CORS + API,
+  //   data: JSON.stringify(reqBody),
+  //   dataType: 'json',
+  //   success: (resBody, status) => {
+  //     if (status === 200) {
+  //       console.log(status, ':', resBody);
+  //     }
+  //   }
+  // })
 
 });
