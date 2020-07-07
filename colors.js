@@ -24,10 +24,10 @@ function toHex(x) {
 
 function toColorJSON(color) {
   const { r, g, b } = color;
-  return JSON.stringify({
+  return {
     hex: `#${toHex(r)}${toHex(g)}${toHex(b)}`,
     rgb: `(${r},${g},${b})`
-  })
+  }
 }
 
 // Color Samplers
