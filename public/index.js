@@ -1,5 +1,5 @@
 // the https://cors-anywhere.herokuapp.com/ avoids CORS errors
-const CORS = '';//"https://cors-anywhere.herokuapp.com/";
+const CORS = "https://cors-anywhere.herokuapp.com/";
 const API = "https://random-colors.herokuapp.com/api/colors";
 
 // JQuery Helpers
@@ -8,16 +8,18 @@ function appendSwatch(color) {
   $('#colors').append(
     `<div id="swatch-row-${Id}" class="swatch-row"></div>`
   );
+  let i = 1;
   color.hexes.forEach(hex => {
     $(`#swatch-row-${Id}`).append(`
-      <div id="color-${Id}" class="color-swatch">
+      <div id="color-${Id}-${i}" class="color-swatch">
         ${hex}
       </div>
       <br>
     `);
-    $(`#color-${Id}`).css({
+    $(`#color-${Id}-${i}`).css({
       'background': hex
     });
+    i++;
   })
 }
 

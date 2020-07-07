@@ -18,17 +18,24 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function toHex(x) {
-  return x < 16? `0${x.toString(16)}` : x.toString(16);
+function toHex(x, offset = 0) {
+  let v = x;
+  if (x >= 0 && x + offset < 0) {
+    v = 0;
+  }
+  if (x < 256 && x + offset >= 256) {
+    v = 255;
+  }
+  return v < 16? `0${v.toString(16)}` : v.toString(16);
 }
 
 function toColorObject(color) {
   const { r, g, b } = color;
   return {
     hexes: [
+      `#${toHex(r, -32)}${toHex(g, -32)}${toHex(b, -32)}`,
       `#${toHex(r)}${toHex(g)}${toHex(b)}`,
-      `#${toHex(r + 32)}${toHex(g + 32)}${toHex(b + 32)}`,
-      `#${toHex(r + 64)}${toHex(g + 64)}${toHex(b + 64)}`
+      `#${toHex(r, 32)}${toHex(g, 32)}${toHex(b, 32)}`
     ],
     rgb: `(${r},${g},${b})`
   }

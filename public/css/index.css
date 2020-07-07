@@ -77,7 +77,7 @@ DIV Identifier Styling
   color: #444444;
 }
 
-#colors div {
+#colors div.color-swatch {
   margin: 15px;
   background: lightblue;
   border-radius: 50%;
@@ -87,19 +87,27 @@ DIV Identifier Styling
   text-align:center;
   font-family: 'Source Code Pro', monospace;
   /* font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New; */
+  /* float:left;
+  content: "";
+  display: table;
+  clear: both; */
 }
 
-#colors div:hover {
+#colors div.color-swatch:hover {
   /* opacity: 0.8; */
   animation: wave 2s ease-out infinite;
 }
 
 .swatch-row {
-  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
 }
 
 .swatch-row div {
-
 }
 
 #button {
@@ -125,7 +133,7 @@ DIV Identifier Styling
 
   80%,
   100% {
-    opacity: .75;
+    opacity: .60;
   }
 }
 
