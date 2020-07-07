@@ -1,5 +1,5 @@
 // the https://cors-anywhere.herokuapp.com/ avoids CORS errors
-const CORS = process.env.CORS || "https://cors-anywhere.herokuapp.com/";
+const CORS = ''; //"https://cors-anywhere.herokuapp.com/";
 const API = "https://random-colors.herokuapp.com/api/colors";
 
 // JQuery Helpers
