@@ -19,7 +19,7 @@ function getRandomInt(min, max) {
 }
 
 function toHex(x, offset = 0) {
-  let v = x;
+  let v = x + offset;
   if (x >= 0 && x + offset < 0) {
     v = 0;
   }
