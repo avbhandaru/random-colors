@@ -76,24 +76,6 @@ function chooseColors(queryOptions) {
   }
 }
 
-let testOptions = {
-  quantity: 3,
-  hueOptions: {
-    use: true,
-    set: {
-      channel: 'r',
-      value: 240
-    },
-    pref: {
-      channel: 'b',
-      range: {
-        low: 140,
-        high: 256
-      }
-    }
-  }
-}
-
 module.exports = {
   chooseColors: chooseColors
 }
