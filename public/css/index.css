@@ -94,6 +94,14 @@ DIV Identifier Styling
   animation: wave 2s ease-out infinite;
 }
 
+.swatch-row {
+  
+}
+
+.swatch-row div {
+
+}
+
 #button {
   margin: 0 auto;
   cursor: pointer;
@@ -120,3 +128,7 @@ DIV Identifier Styling
     opacity: .75;
   }
 }
+
+/*
+Classes
+*/

@@ -22,10 +22,14 @@ function toHex(x) {
   return x < 16? `0${x.toString(16)}` : x.toString(16);
 }
 
-function toColorJSON(color) {
+function toColorObject(color) {
   const { r, g, b } = color;
   return {
-    hex: `#${toHex(r)}${toHex(g)}${toHex(b)}`,
+    hexes: [
+      `#${toHex(r)}${toHex(g)}${toHex(b)}`,
+      `#${toHex(r + 32)}${toHex(g + 32)}${toHex(b + 32)}`,
+      `#${toHex(r + 64)}${toHex(g + 64)}${toHex(b + 64)}`
+    ],
     rgb: `(${r},${g},${b})`
   }
 }
@@ -71,9 +75,9 @@ function chooseColors(queryOptions) {
   let { quantity, hueOptions } = queryOptions;
   hueOptions.use = hueOptions.use === 'true';
   if (!hueOptions.use) {
-    return randomColors(quantity).map(toColorJSON);
+    return randomColors(quantity).map(toColorObject);
   } else {
-    return randomColorsHue(hueOptions, quantity).map(toColorJSON);
+    return randomColorsHue(hueOptions, quantity).map(toColorObject);
   }
 }
 

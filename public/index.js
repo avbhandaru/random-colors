@@ -1,19 +1,24 @@
 // the https://cors-anywhere.herokuapp.com/ avoids CORS errors
-const CORS = ''; //"https://cors-anywhere.herokuapp.com/";
+const CORS = '';//"https://cors-anywhere.herokuapp.com/";
 const API = "https://random-colors.herokuapp.com/api/colors";
 
 // JQuery Helpers
 function appendSwatch(color) {
-  const Id = color.hex.split('#')[1];
-  $('#colors').append(`
-    <div id="color-${Id}" class="color-swatch">
-      ${color.hex}
-    </div>
-    <br>
-  `);
-  $(`#color-${Id}`).css({
-    'background': color.hex
-  });
+  const Id = color.hexes[0].split('#')[1];
+  $('#colors').append(
+    `<div id="swatch-row-${Id}" class="swatch-row"></div>`
+  );
+  color.hexes.forEach(hex => {
+    $(`#swatch-row-${Id}`).append(`
+      <div id="color-${Id}" class="color-swatch">
+        ${hex}
+      </div>
+      <br>
+    `);
+    $(`#color-${Id}`).css({
+      'background': hex
+    });
+  })
 }
 
 function removeSwatches() {
