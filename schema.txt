@@ -1,0 +1,25 @@
+GET body = {
+  quantity: Number of color items to return,
+  hueOptions: {
+    use: boolean true | false,
+    set: {
+      channel: enum 'r' | 'g' | 'b'
+      value: Optional number to denote how to set the channel value
+    },
+    pref: {
+      channel: enum 'r' | 'g' | 'b' Decides which hue will be the most perceived,
+      range: {
+        low: num,
+        high: num
+      }
+    }
+  }
+}
+
+POST body = {
+
+}
+
+DELETE body = {
+
+}
