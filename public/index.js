@@ -2,14 +2,30 @@
 const CORS = "https://cors-anywhere.herokuapp.com/";
 const API = "https://random-colors.herokuapp.com/api/colors";
 
-$(document).ready(() => {
-  // Get input and form API call
+// JQuery Helpers
+function appendSwatch(color) {
+  const Id = color.hex.split('#')[1];
+  $('#colors').append(`
+    <div id="color-${Id}" class="color-swatch">
+      ${color.hex}
+    </div>
+    <br>
+  `);
+  $(`#color-${Id}`).css({
+    'background': color.hex
+  });
+}
 
+function removeSwatches() {
+  $('#colors').empty();
+}
+
+function getSwatches() {
   // Test API reqBody
   const reqBody = {
     quantity: 3,
     hueOptions: {
-      use: true,
+      use: false, // set true if you dare
       set: {
         channel: 'r',
         value: 140
@@ -17,13 +33,12 @@ $(document).ready(() => {
       pref: {
         channel: 'b',
         range: {
-          low: 250,
+          low: 220,
           high: 256
         }
       }
     }
   };
-  console.log('req body', reqBody);
 
   fetch(CORS + API, {
     method: 'POST',
@@ -34,22 +49,19 @@ $(document).ready(() => {
   })
   .then(response => response.json())
   .then(resBody => {
-    console.log('SUCCESS', JSON.parse(resBody))
+    const colors = resBody.colors;
+    removeSwatches();
+    colors.forEach(appendSwatch);
   })
   .catch(err => {
     console.log('ERROR', err)
   })
+}
 
-  // $.ajax({
-  //   type: 'GET',
-  //   url: CORS + API,
-  //   data: JSON.stringify(reqBody),
-  //   dataType: 'json',
-  //   success: (resBody, status) => {
-  //     if (status === 200) {
-  //       console.log(status, ':', resBody);
-  //     }
-  //   }
-  // })
-
+// On Ready
+$(document).ready(() => {
+  $('#button').click(() => {
+    getSwatches();
+  });
+  getSwatches();
 });
