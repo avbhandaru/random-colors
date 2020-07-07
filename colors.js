@@ -68,7 +68,8 @@ function randomColorsHue(hueOptions, n) {
 }
 
 function chooseColors(queryOptions) {
-  const { quantity, hueOptions } = queryOptions;
+  let { quantity, hueOptions } = queryOptions;
+  hueOptions.use = hueOptions.use === 'true';
   if (!hueOptions.use) {
     return randomColors(quantity).map(toColorJSON);
   } else {
