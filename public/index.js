@@ -27,11 +27,14 @@ $(document).ready(() => {
 
   fetch(CORS + API, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(reqBody)
   })
-  .then(respose => response.json())
+  .then(response => response.json())
   .then(resBody => {
-    console.log('SUCCESS', resBody)
+    console.log('SUCCESS', JSON.parse(resBody))
   })
   .catch(err => {
     console.log('ERROR', err)
